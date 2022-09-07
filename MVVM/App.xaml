@@ -20,10 +20,12 @@
         </Style>
         <Style TargetType="DatePicker">
             <Setter Property="Margin" Value="10 5 0 0"/>
+            <Setter Property="MaxHeight" Value="30"/>
+            
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="35 15 0 0"/>
-            <Setter Property="MinWidth" Value="75"/>
+            <Setter Property="Margin" Value="25 15 0 0"/>
+            <Setter Property="MinWidth" Value="85"/>
         </Style>
     </Application.Resources>
 </Application>
