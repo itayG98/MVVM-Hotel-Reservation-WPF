@@ -14,7 +14,11 @@ namespace MVVM.Model
         {
             _reservation = new List<Reservation>();
         }
-        public IEnumerable<Reservation> GetReservationsForUser(string UserName) =>  _reservation.Where(x => x.UserName == UserName); 
+        /// <summary>
+        /// Get The all the Reservations
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Reservation> GetReservations() =>  _reservation.ToList(); 
 
         public void AddReservation(Reservation resrv) 
         {

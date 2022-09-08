@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:MVVM"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
         <Style TargetType="RowDefinition">
             <Setter Property="Height" Value="auto"/>
         </Style>
@@ -13,6 +14,10 @@
         <Style TargetType="TextBlock">
             <Setter Property="Padding" Value="5 10"/>
             <Setter Property="Margin" Value="10 5 0 0"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="Header">
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Padding" Value="5 10"/>
@@ -24,8 +29,12 @@
             
         </Style>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="25 15 0 0"/>
+            <Setter Property="Margin" Value="15 10 0 0"/>
             <Setter Property="MinWidth" Value="85"/>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="0 5 0 0"/>
         </Style>
     </Application.Resources>
 </Application>

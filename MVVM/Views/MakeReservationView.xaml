@@ -17,7 +17,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Make Reservation" FontSize="30"/>
+        <TextBlock Grid.Row="0" Text="Make Reservation" Style="{StaticResource Header}"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
