@@ -24,7 +24,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="User Name"/>
-            <TextBox Grid.Row="1"/>
+            <TextBox Grid.Row="1" Text="{Binding UserName}" />
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
@@ -36,9 +36,9 @@
                 <ColumnDefinition SharedSizeGroup="SecondCol"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Text="Start Date"/>
-            <DatePicker  Grid.Row="1" SelectedDate="" />
+            <DatePicker  Grid.Row="1" SelectedDate="{Binding StartDate}" />
             <TextBlock Grid.Column="1" Grid.Row="0" Text="End Date"/>
-            <DatePicker  Grid.Column="1" Grid.Row="1" SelectedDate="" />
+            <DatePicker  Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate}" />
         </Grid>
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
@@ -50,13 +50,13 @@
                 <ColumnDefinition SharedSizeGroup="SecondCol"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Text="Room Number"/>
-            <TextBox  Grid.Row="1"/>
+            <TextBox  Grid.Row="1" Text="{Binding RoomID}" />
             <TextBlock Grid.Column="1" Grid.Row="0" Text="Floor Number"/>
-            <TextBox  Grid.Column="1" Grid.Row="1"/>
+            <TextBox  Grid.Column="1" Grid.Row="1" Text="{Binding FloorNum}" />
         </Grid>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <Button Content="Submit"/>
-            <Button Content="Cancel"/>
+            <Button Content="Submit" Command="{Binding SubmitCommand}"/>
+            <Button Content="Cancel" Command="{Binding CancelCommand}" />
             </StackPanel>
     </Grid>
 </UserControl>

@@ -23,10 +23,10 @@ namespace MVVM
     {
         private readonly Hotel hotel = new Hotel("Singelton Suites");
 
-        public List<Reservation> AllReservations 
+        public List<Reservation> AllReservations
         {
-            get {return hotel.GetReservations().ToList(); }
-            set {; } 
+            get { return hotel.GetReservations().ToList(); }
+            set {; }
         }
         public MainWindow()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,9 @@ namespace MVVM.Views
     /// </summary>
     public partial class ReservationListView : UserControl
     {
+        public List<Reservation> resrv;
+
+        public List<Reservation> Reservations { get { return resrv; } set { resrv = value; } }
         public ReservationListView()
         {
             InitializeComponent();

@@ -18,16 +18,16 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="View Reservation" Style="{StaticResource Header}" />
-        <Button Grid.Row="0" Grid.Column="1" Content="Make New Reservation"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="Make New Reservation" Command="{Binding MakeReservation}"/>
 
-        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding }">
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Reservations ,Mode=TwoWay}" >
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn/>
-                        <GridViewColumn/>
-                        <GridViewColumn/>
-                        <GridViewColumn/>
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="User Name"  DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Room"  DisplayMemberBinding="{Binding RoomID}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Start date"  DisplayMemberBinding="{Binding Start}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="End date"  DisplayMemberBinding="{Binding End}" />
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
