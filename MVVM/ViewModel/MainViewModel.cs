@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace MVVM.ViewModel
     public class MainViewModel : ViewModelBase
     {
         public ViewModelBase CurrentViewModel { get; }
-        public MainViewModel()
+        public MainViewModel(Hotel hotel)
         {
-            CurrentViewModel=new ReservationLVViewModel();
+            CurrentViewModel=new MakeReservationViewModel(hotel);
         }
     }
 }

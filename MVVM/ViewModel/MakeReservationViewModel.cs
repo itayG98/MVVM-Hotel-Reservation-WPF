@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MVVM.Commands;
+using MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,15 @@ namespace MVVM.ViewModel
     {
         private string _userName;
         private int roomID, floorNum;
-        private DateTime start, end;
+        private DateTime start = DateTime.Now;
+        private DateTime end = DateTime.Now.AddDays(1);
+
+        public MakeReservationViewModel(Hotel hotel)
+        {
+            SubmitCommand = new SubmitNewReservation(this,hotel);
+            /*CancelCommand = cancelCommand;*/
+        }
+
         public string UserName 
         {
             get {return _userName; }

@@ -21,13 +21,6 @@ namespace MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly Hotel hotel = new Hotel("Singelton Suites");
-
-        public List<Reservation> AllReservations
-        {
-            get { return hotel.GetReservations().ToList(); }
-            set {; }
-        }
         public MainWindow()
         {
             InitializeComponent();

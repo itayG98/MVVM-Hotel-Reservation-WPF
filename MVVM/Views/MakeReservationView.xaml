@@ -35,7 +35,7 @@
                 <ColumnDefinition SharedSizeGroup="FirstCol"/>
                 <ColumnDefinition SharedSizeGroup="SecondCol"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Text="Start Date"/>
+            <TextBlock Grid.Row="0" Text="Start Date"  />
             <DatePicker  Grid.Row="1" SelectedDate="{Binding StartDate ,UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Grid.Column="1" Grid.Row="0" Text="End Date"/>
             <DatePicker  Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate ,UpdateSourceTrigger=PropertyChanged}" />
