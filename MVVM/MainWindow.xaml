@@ -9,6 +9,6 @@
         Title="ReserveRoom" Height="450" Width="800" FontSize="14">
         
     <Grid Margin="20 10" MaxWidth="750">
-        <Views:MakeReservationView DataContext="{Binding CurrentViewModel}" />
+        <Views:ReservationListView DataContext="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

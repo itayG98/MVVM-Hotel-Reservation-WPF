@@ -11,7 +11,7 @@ namespace MVVM.ViewModel
         public ViewModelBase CurrentViewModel { get; }
         public MainViewModel()
         {
-            CurrentViewModel=new MakeReservationViewModel();
+            CurrentViewModel=new ReservationLVViewModel();
         }
     }
 }

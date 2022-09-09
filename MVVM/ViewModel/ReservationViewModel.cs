@@ -10,10 +10,10 @@ namespace MVVM.ViewModel
     public class ReservationViewModel : ViewModelBase
     {
         private readonly Reservation reservation;
-        public string roomID => reservation.roomID?.ToString();
+        public string RoomID => reservation.roomID?.ToString();
         public string UserName => reservation.UserName;
-        public DateTime Start => reservation.Start;
-        public DateTime End => reservation.End; 
+        public DateTime StartDate => reservation.Start;
+        public DateTime EndDate => reservation.End; 
         public TimeSpan Duration => reservation.Duration;
 
         public ReservationViewModel(Reservation resev)
