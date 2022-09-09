@@ -18,7 +18,7 @@ namespace MVVM.ViewModel
 
         public MakeReservationViewModel(Hotel hotel)
         {
-            SubmitCommand = new SubmitNewReservation(this,hotel);
+            SubmitCommand = new SubmitNewReservationCommand(this,hotel);
             /*CancelCommand = cancelCommand;*/
         }
 

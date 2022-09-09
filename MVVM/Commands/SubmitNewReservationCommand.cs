@@ -2,6 +2,7 @@
 using MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,15 +10,26 @@ using System.Windows;
 
 namespace MVVM.Commands
 {
-    internal class SubmitNewReservation : CommandBase
+    internal class SubmitNewReservationCommand : CommandBase
     {
         private readonly Hotel _hotel;
         private readonly MakeReservationViewModel _makeReservationViewModel;
-        public SubmitNewReservation(MakeReservationViewModel makeReservationViewModel,Hotel hotel)
+
+        public SubmitNewReservationCommand(MakeReservationViewModel makeReservationViewModel,Hotel hotel)
         {
             _hotel = hotel;
             _makeReservationViewModel = makeReservationViewModel;
+            _makeReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
+
+        private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(MakeReservationViewModel.UserName)) 
+            {
+                OnCanExecuteChanged();
+            }
+        }
+
         public override void Execute(object? parameter)
         {
             Reservation resrv = new Reservation(
@@ -40,6 +52,11 @@ namespace MVVM.Commands
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+
+        public override bool CanExecute(object? parameter)
+        {
+            return !string.IsNullOrEmpty(_makeReservationViewModel.UserName)&& base.CanExecute(parameter);
         }
     }
 }
