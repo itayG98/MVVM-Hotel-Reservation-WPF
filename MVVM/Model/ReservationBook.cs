@@ -22,12 +22,12 @@ namespace MVVM.Model
 
         public void AddReservation(Reservation resrv) 
         {
+            if (resrv.End < resrv.Start)
+                throw new ReservationDateConflict(resrv);
             foreach (Reservation existingReservation in _reservation)
             {
                 if (existingReservation.Conflicts(resrv))
                     throw new ReservationConflictException(existingReservation,resrv);
-                else if (resrv.End<resrv.Start)
-                    throw new ReservationDateConflict(resrv);
             }
             _reservation.Add(resrv);
         }

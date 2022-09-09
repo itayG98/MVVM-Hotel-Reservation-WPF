@@ -35,6 +35,10 @@ namespace MVVM.Commands
             {
                 MessageBox.Show(ex.Message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
             }
+            catch (ReservationDateConflict ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }
