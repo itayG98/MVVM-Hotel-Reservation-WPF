@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MVVM.Views"
+             xmlns:local="clr-namespace:MVVM.Views" xmlns:viewmodel="clr-namespace:MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MakeReservationViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
@@ -24,7 +24,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="User Name"/>
-            <TextBox Grid.Row="1" Text="{Binding UserName}" />
+            <TextBox Grid.Row="1" Text="{Binding UserName ,UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
@@ -36,9 +36,9 @@
                 <ColumnDefinition SharedSizeGroup="SecondCol"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Text="Start Date"/>
-            <DatePicker  Grid.Row="1" SelectedDate="{Binding StartDate}" />
+            <DatePicker  Grid.Row="1" SelectedDate="{Binding StartDate ,UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Grid.Column="1" Grid.Row="0" Text="End Date"/>
-            <DatePicker  Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate}" />
+            <DatePicker  Grid.Column="1" Grid.Row="1" SelectedDate="{Binding EndDate ,UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
@@ -50,9 +50,9 @@
                 <ColumnDefinition SharedSizeGroup="SecondCol"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Text="Room Number"/>
-            <TextBox  Grid.Row="1" Text="{Binding RoomID}" />
+            <TextBox  Grid.Row="1" Text="{Binding RoomID ,UpdateSourceTrigger=PropertyChanged}" />
             <TextBlock Grid.Column="1" Grid.Row="0" Text="Floor Number"/>
-            <TextBox  Grid.Column="1" Grid.Row="1" Text="{Binding FloorNum}" />
+            <TextBox  Grid.Column="1" Grid.Row="1" Text="{Binding FloorNum ,UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" >
             <Button Content="Submit" Command="{Binding SubmitCommand}"/>
