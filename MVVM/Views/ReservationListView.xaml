@@ -27,8 +27,8 @@
                     <GridView.Columns>
                         <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="User Name"  DisplayMemberBinding="{Binding UserName}" />
                         <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Room"  DisplayMemberBinding="{Binding RoomID}" />
-                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Start date"  DisplayMemberBinding="{Binding StartDate.Date}" />
-                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="End date"  DisplayMemberBinding="{Binding EndDate.Date}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Start date"  DisplayMemberBinding="{Binding StartDate}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="End date"  DisplayMemberBinding="{Binding EndDate}" />
                         <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="Duration"  DisplayMemberBinding="{Binding Duration.Days}" />
                     </GridView.Columns>
                 </GridView>
