@@ -24,10 +24,13 @@ namespace MVVM.Commands
 
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(MakeReservationViewModel.UserName)) 
+            if (e.PropertyName == nameof(MakeReservationViewModel.UserName)||
+                e.PropertyName==nameof(MakeReservationViewModel.FloorNum)||
+                e.PropertyName==nameof(MakeReservationViewModel.RoomID)) 
             {
                 OnCanExecuteChanged();
             }
+            
         }
 
         public override void Execute(object? parameter)
@@ -56,7 +59,10 @@ namespace MVVM.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            return !string.IsNullOrEmpty(_makeReservationViewModel.UserName)&& base.CanExecute(parameter);
+            return !string.IsNullOrEmpty(_makeReservationViewModel.UserName)&&
+                _makeReservationViewModel .FloorNum>0
+                && _makeReservationViewModel.RoomID>0
+                && base.CanExecute(parameter);
         }
     }
 }

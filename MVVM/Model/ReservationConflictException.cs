@@ -31,5 +31,7 @@ namespace MVVM.Model
             IncomingReservation = incomingReservation;
         }
 
+        public override string Message => $"{ExistingReservation.Start.ToString("d")}-{ExistingReservation.End.ToString("d")}" +
+            $" in room: {ExistingReservation.roomID} already taken and conflicts the new order";
     }
 }
