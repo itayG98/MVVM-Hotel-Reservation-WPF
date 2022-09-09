@@ -12,8 +12,7 @@ namespace MVVM.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnProperyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            PropertyChanged.Invoke(this,new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(propertyName));
         }
     }
 }
