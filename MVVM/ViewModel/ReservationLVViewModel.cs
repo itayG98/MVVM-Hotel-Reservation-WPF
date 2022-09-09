@@ -1,10 +1,8 @@
-﻿using MVVM.Model;
+﻿using MVVM.Commands;
+using MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MVVM.ViewModel
@@ -18,6 +16,7 @@ namespace MVVM.ViewModel
 
         public ReservationLVViewModel()
         {
+            MakeReservation = new NavigateCommand();
             _reservations = new ObservableCollection<ReservationViewModel>();
             _reservations.Add(new ReservationViewModel(new Reservation("Itay", new RoomID(1, 1), new DateTime(2022, 1, 1), new DateTime(2022, 1, 10))));
             _reservations.Add(new ReservationViewModel(new Reservation("Itay", new RoomID(1, 1), new DateTime(2022, 2, 1), new DateTime(2022, 2, 10))));
