@@ -1,4 +1,4 @@
-# MVVMSingeleTonSean
+# MVVM With SingeleTonSean
 Im learning more about MVVM ,InotifyPorpChange,Icommand , WPF 
 
 Using instructed coding along stragedy 
