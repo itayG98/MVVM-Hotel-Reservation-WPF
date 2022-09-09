@@ -26,6 +26,8 @@ namespace MVVM.Model
             {
                 if (existingReservation.Conflicts(resrv))
                     throw new ReservationConflictException(existingReservation,resrv);
+                else if (resrv.End<resrv.Start)
+                    throw new ReservationDateConflict(resrv);
             }
             _reservation.Add(resrv);
         }
