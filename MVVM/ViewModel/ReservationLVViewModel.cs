@@ -14,9 +14,9 @@ namespace MVVM.ViewModel
         public IEnumerable<ReservationViewModel> Reservations => _reservations;
         public ICommand MakeReservationCommand { get; }
 
-        public ReservationLVViewModel(NavigationStore navigationStore)
+        public ReservationLVViewModel(NavigationStore navigationStore, Func<MakeReservationViewModel> createMakeReservationViewModel)
         {
-            MakeReservationCommand = new NavigateCommand(navigationStore);
+            MakeReservationCommand = new NavigateCommand(navigationStore,createMakeReservationViewModel);
             _reservations = new ObservableCollection<ReservationViewModel>();
 
             _reservations.Add(new ReservationViewModel(new Reservation("Itay", new RoomID(1, 1), new DateTime(2022, 1, 1), new DateTime(2022, 1, 10))));

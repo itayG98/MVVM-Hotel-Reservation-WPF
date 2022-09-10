@@ -1,6 +1,7 @@
 ﻿using MVVM.Model;
 using MVVM.Sores;
 using MVVM.ViewModel;
+using System;
 using System.Windows;
 
 namespace MVVM
@@ -20,13 +21,22 @@ namespace MVVM
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViwModel = new ReservationLVViewModel(_navigationStore);
+            _navigationStore.CurrentViwModel = CreateMakeReservationViewModel();
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)
             };
             MainWindow.Show();
             base.OnStartup(e);
+        }
+        private MakeReservationViewModel CreateMakeReservationViewModel()
+        {
+            return new MakeReservationViewModel(_hotel,_navigationStore,CreateReservationLVViewModel);
+        }
+
+        private ReservationLVViewModel CreateReservationLVViewModel()
+        {
+            return new ReservationLVViewModel(_navigationStore, CreateMakeReservationViewModel);
         }
     }
 }
