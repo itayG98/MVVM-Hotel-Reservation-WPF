@@ -1,5 +1,6 @@
 ﻿using MVVM.Commands;
 using MVVM.Model;
+using MVVM.Sores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,19 +17,14 @@ namespace MVVM.ViewModel
         private DateTime start = DateTime.Now;
         private DateTime end = DateTime.Now.AddDays(1);
 
-        public MakeReservationViewModel(Hotel hotel)
+        public string UserName
         {
-            SubmitCommand = new SubmitNewReservationCommand(this,hotel);
-            CancelCommand = new CancelMakeReservationCommand();
-        }
-
-        public string UserName 
-        {
-            get {return _userName; }
-            set {
+            get { return _userName; }
+            set
+            {
                 _userName = value;
                 OnProperyChanged(nameof(UserName));
-                } 
+            }
         }
         public int RoomID
         {
@@ -56,7 +52,7 @@ namespace MVVM.ViewModel
                 start = value;
                 OnProperyChanged(nameof(StartDate));
             }
-        }       
+        }
         public DateTime EndDate
         {
             get { return end; }
@@ -69,5 +65,12 @@ namespace MVVM.ViewModel
 
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
+        public MakeReservationViewModel(Hotel hotel, NavigationStore navigationStore)
+        {
+            SubmitCommand = new SubmitNewReservationCommand(this,hotel);
+            CancelCommand = new NavigateCommand(navigationStore);
+        }
+
+
     }
 }
