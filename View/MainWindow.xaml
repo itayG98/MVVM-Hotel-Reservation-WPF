@@ -6,7 +6,7 @@
         xmlns:Views="clr-namespace:MVVM.ViewModel;assembly=ViewModel" 
         xmlns:Views1="clr-namespace:MVVM.Views"
         mc:Ignorable="d"
-        Title="ReserveRoom" Height="450" Width="800" FontSize="14">
+        Title="Reserve a Room" Height="450" Width="800" FontSize="14">
 
 
     <Grid Margin="20 10" MaxWidth="750">
@@ -18,6 +18,6 @@
                 <Views1:ReservationListView />
             </DataTemplate>
         </Grid.Resources>
-        <ContentControl Content="{Binding CurrentViewModel}" />
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>
