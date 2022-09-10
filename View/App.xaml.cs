@@ -28,8 +28,11 @@ namespace MVVM
         protected override void OnStartup(StartupEventArgs e)
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer(CONNECTIONSTRING).Options;
-            ReserveRoomDBContext dbcContext = new ReserveRoomDBContext(options);
-            dbcContext.Database.Migrate();
+            using (ReserveRoomDBContext dbcContext = new ReserveRoomDBContext(options))
+            {
+                dbcContext.Database.Migrate();
+            }
+            
             _navigationStore.CurrentViewModel = CreateMakeReservationViewModel();
             MainWindow = new MainWindow()
             {

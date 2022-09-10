@@ -11,7 +11,7 @@ namespace Hotel_Model.DTO
     {
         [Key]
         public Guid Id { get; set;  }
-        public string UserName { get; }
+        public string UserName { get; set; }
         public int FloorNum { get; set; }
         public int RoomNum { get; set; }
         public DateTime Start { get; set; }
