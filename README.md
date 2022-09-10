@@ -9,7 +9,7 @@ I'm learning MVVM pattern and i started this repo as exercising coding along wit
 <img src="https://github.com/itayG98/MVVMSingeleTonSean/blob/618f398f1363dbdc35521a49b9e61c5b17c9e095/MVVM/PreView/FirtPreviw.jpg" width="800">
 </div>
 
-### Purpose
+## Purpose
 The app should simply allow a costumer to reserve a room in fictional hotel inserting 5 inputs
 
 1. UserName
@@ -20,7 +20,7 @@ The app should simply allow a costumer to reserve a room in fictional hotel inse
 
 It should show list of all the reservation validate new ones and update SQL local Server .
 
-### Validation 
+## Validation 
 All this property binded to the MakeReservationViewModel properties here is an exmple : 
 https://github.com/itayG98/MVVM-Hotel-Reservation-WPF/blob/3efa25d8dbb311a197bb4dc3ad22b7348d19d053/View/Views/MakeReservationView.xaml#L52-L55
 
