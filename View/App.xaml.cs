@@ -1,4 +1,5 @@
 ﻿using Hotel_Model.DBContext;
+using Hotel_Model.Services.ReservationConflictValidator;
 using Microsoft.EntityFrameworkCore;
 using MVVM.Model;
 using MVVM.Services;
@@ -8,6 +9,8 @@ using System;
 using System.Diagnostics.Metrics;
 using System.Windows;
 using System.Windows.Markup;
+using ViewModel.Services.ReservationCreator;
+using ViewModel.Services.ReservationProvider;
 
 namespace MVVM
 {
@@ -20,15 +23,21 @@ namespace MVVM
         private readonly Hotel _hotel;
         private readonly NavigationStore _navigationStore;
         private const string CONNECTIONSTRING= "Data Source = itayG98; Initial Catalog = HotelDB.db; Integrated Security = True";
+        private readonly ReserveRoomDbFactory reservationDbContextFactort;
         public App() 
         {
-            _hotel = new Hotel("Gety's Suiets");
-            _navigationStore = new NavigationStore();
+            reservationDbContextFactort = new (CONNECTIONSTRING);
+            DatabaseReservationProvider reservationProvider = new (reservationDbContextFactort);
+            DatabaseReservationCreator reservationCreator = new (reservationDbContextFactort);
+            DatabaseReservationConflictValidator reservationValidator = new (reservationDbContextFactort);
+
+            ReservationBook reservationBook = new (reservationProvider, reservationCreator, reservationValidator);
+            _hotel = new ("Gety's Suiets",reservationBook);
+            _navigationStore = new();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer(CONNECTIONSTRING).Options;
-            using (ReserveRoomDBContext dbcContext = new ReserveRoomDBContext(options))
+            using (ReserveRoomDBContext dbcContext = reservationDbContextFactort.CreateDbContext())
             {
                 dbcContext.Database.Migrate();
             }
@@ -48,7 +57,7 @@ namespace MVVM
 
         private ReservationLVViewModel CreateReservationLVViewModel()
         {
-            return new ReservationLVViewModel(_hotel,new NavigationService(_navigationStore, CreateMakeReservationViewModel));
+            return ReservationLVViewModel.LoadViewModel(_hotel,new NavigationService(_navigationStore, CreateMakeReservationViewModel));
         }
     }
 }

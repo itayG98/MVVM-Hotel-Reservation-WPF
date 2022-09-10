@@ -1,18 +1,21 @@
 ﻿using MVVM.Model;
 using MVVM.Services;
 using MVVM.ViewModel;
+using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
+using ViewModel.Commands;
 
 namespace MVVM.Commands
 {
-    public class SubmitNewReservationCommand : CommandBase
+    public class MakeReservationCommand : AsyncCommand
     {
         private readonly Hotel _hotel;
         private readonly MakeReservationViewModel _makeReservationViewModel;
         private readonly NavigationService _reservationNavigationService;
 
-        public SubmitNewReservationCommand(MakeReservationViewModel makeReservationViewModel,Hotel hotel,NavigationService reservationNavigationService)
+        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel,Hotel hotel,NavigationService reservationNavigationService)
         {
             _hotel = hotel;
             _makeReservationViewModel = makeReservationViewModel;
@@ -31,7 +34,7 @@ namespace MVVM.Commands
             
         }
 
-        public override void Execute(object? parameter)
+        public override async Task ExecuteAsync(object? parameter)
         {
             Reservation resrv = new Reservation(
                 _makeReservationViewModel.UserName,
@@ -39,19 +42,23 @@ namespace MVVM.Commands
                 _makeReservationViewModel.StartDate,
                 _makeReservationViewModel.EndDate
                 );
-            try 
+            try
             {
-                _hotel.MakeReserbation(resrv);
+                await _hotel.MakeReserbation(resrv);
                 MessageBox.Show("Succesfully reserved room", "Enjoy!", MessageBoxButton.OK, MessageBoxImage.Information);
                 _reservationNavigationService.Navigate();
             }
             catch (ReservationConflictException ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (ReservationDateConflict ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed making reservation", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

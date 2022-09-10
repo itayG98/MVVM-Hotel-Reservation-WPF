@@ -63,7 +63,7 @@ namespace MVVM.ViewModel
         public ICommand CancelCommand { get; }
         public MakeReservationViewModel(Hotel hotel,NavigationService reservationNavigationService)
         {
-            SubmitCommand = new SubmitNewReservationCommand(this,hotel, reservationNavigationService);
+            SubmitCommand = new MakeReservationCommand(this,hotel, reservationNavigationService);
             CancelCommand = new NavigateCommand(reservationNavigationService);
         }
 

@@ -1,32 +1,39 @@
-﻿using System.Collections.Generic;
+﻿using Hotel_Model.Services.ReservationConflictValidator;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using ViewModel.Services.ReservationCreator;
+using ViewModel.Services.ReservationProvider;
 
 namespace MVVM.Model
 {
     public class ReservationBook
     {
-        private List<Reservation> _reservation;
+        private IReservationProvider _resevationProvider;
+        private IreservationCreator _reservationCreator;
+        private IReservationConflicValidator _reservationConflicValidator;
 
-        public ReservationBook()
+        public ReservationBook(IReservationProvider resevationProvider, IreservationCreator reservationCreator, IReservationConflicValidator reservationConflicValidator)
         {
-            _reservation = new List<Reservation>();
+            _resevationProvider = resevationProvider;
+            _reservationCreator = reservationCreator;
+            _reservationConflicValidator = reservationConflicValidator;
         }
+
+
         /// <summary>
         /// Get The all the Reservations
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Reservation> GetReservations() =>  _reservation.ToList(); 
-
-        public void AddReservation(Reservation resrv) 
+        public async Task<IEnumerable<Reservation>> GetReservations() => await _resevationProvider.GetAllReservation();
+        public async Task AddReservation(Reservation resrv) 
         {
             if (resrv.End < resrv.Start)
                 throw new ReservationDateConflict(resrv);
-            foreach (Reservation existingReservation in _reservation)
-            {
-                if (existingReservation.Conflicts(resrv))
-                    throw new ReservationConflictException(existingReservation,resrv);
-            }
-            _reservation.Add(resrv);
+            Reservation conflictingReservtion = await _reservationConflicValidator.GetConflictReservation(resrv);
+            if (conflictingReservtion != null)
+                throw new ReservationConflictException(conflictingReservtion, resrv);
+            await _reservationCreator.CreateReservation(resrv);
         }
     }
 }

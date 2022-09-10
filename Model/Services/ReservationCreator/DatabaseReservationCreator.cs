@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel.Services.ReservationCreator
 {
-    internal class DatabaseReservationCreator : IreservationCreator
+    public class DatabaseReservationCreator : IreservationCreator
     {
         private readonly ReserveRoomDbFactory _dbContextFactory;
 
