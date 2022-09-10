@@ -10,7 +10,7 @@ namespace Hotel_Model.DTO
     public class ReservationDTO
     {
         [Key]
-        Guid Id { get; set;  }
+        public Guid Id { get; set;  }
         public string UserName { get; }
         public int FloorNum { get; set; }
         public int RoomNum { get; set; }

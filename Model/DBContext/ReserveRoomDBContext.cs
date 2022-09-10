@@ -11,6 +11,10 @@ namespace Hotel_Model.DBContext
 {
     public class ReserveRoomDBContext : DbContext
     {
+        public ReserveRoomDBContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<ReservationDTO> Reservations { get; set; }
     }
 }
