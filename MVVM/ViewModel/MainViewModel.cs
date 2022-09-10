@@ -16,8 +16,12 @@ namespace MVVM.ViewModel
         public MainViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
-
+        private void OnCurrentViewModelChanged()
+        {
+            OnProperyChanged(nameof(CurrentViewModel));
+        }
     }
 }

@@ -15,7 +15,7 @@
                 <Views:MakeReservationView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodel:ReservationLVViewModel}" >
-                <Views:MakeReservationView/>
+                <Views:ReservationListView/>
             </DataTemplate>
         </Grid.Resources>
         <ContentControl Content="{Binding CurrentViewModel}" />

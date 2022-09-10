@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MVVM.Model;
+using MVVM.Sores;
+using MVVM.ViewModel;
 
 namespace MVVM.Commands
 {
     public class NavigateCommand : CommandBase
     {
+        private readonly NavigationStore _navigationStore;
+
+        public NavigateCommand(NavigationStore navigationStore)
+        {
+            _navigationStore = navigationStore;
+        }
+
         public override void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            _navigationStore.CurrentViwModel = new MakeReservationViewModel(new Hotel("Exmp"));
         }
     }
 }
