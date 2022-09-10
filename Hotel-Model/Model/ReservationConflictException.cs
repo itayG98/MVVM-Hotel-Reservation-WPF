@@ -7,7 +7,7 @@ namespace MVVM.Model
     /// The Exeption thrown for two Reservation which conflicts eachother
     /// </summary>
     [Serializable]
-    internal class ReservationConflictException : Exception
+    public class ReservationConflictException : Exception
     {
         public Reservation ExistingReservation { get; }
         public Reservation IncomingReservation { get; }

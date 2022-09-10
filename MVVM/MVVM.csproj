@@ -12,4 +12,8 @@
     <Content Include="Assets\booking_hotel.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hotel-Model\Hotel-Model.csproj" />
+  </ItemGroup>
+
 </Project>
