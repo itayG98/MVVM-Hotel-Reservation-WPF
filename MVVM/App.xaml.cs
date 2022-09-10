@@ -22,7 +22,7 @@ namespace MVVM
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViwModel = CreateMakeReservationViewModel();
+            _navigationStore.CurrentViewModel = CreateMakeReservationViewModel();
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)

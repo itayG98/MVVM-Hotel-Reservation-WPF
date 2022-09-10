@@ -13,7 +13,7 @@ namespace MVVM.Sores
         private ViewModelBase _currentViwModel;
         public event Action CurrentViewModelChanged;
 
-        public ViewModelBase CurrentViwModel 
+        public ViewModelBase CurrentViewModel 
         {
             get => _currentViwModel;
             set
