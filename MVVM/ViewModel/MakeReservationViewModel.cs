@@ -1,12 +1,7 @@
 ﻿using MVVM.Commands;
 using MVVM.Model;
 using MVVM.Services;
-using MVVM.Sores;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MVVM.ViewModel

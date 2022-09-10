@@ -1,8 +1,6 @@
 ﻿using MVVM.Commands;
 using MVVM.Model;
 using MVVM.Services;
-using MVVM.Sores;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
