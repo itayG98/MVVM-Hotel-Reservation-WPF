@@ -12,19 +12,11 @@ namespace MVVM.Model
 
         public Reservation(string userName, RoomID roomID, DateTime start, DateTime end)
         {
+            UserName = userName;
             this.roomID = roomID;
             Start = start;
             End = end;
-            UserName = userName;
         }
-
-        internal bool Conflicts(Reservation nextReserv)
-        {
-            if (roomID != nextReserv.roomID)
-                return false;
-            return nextReserv.Start<End && nextReserv.End>Start;
-        }
-
         public override string ToString()
         {
             return $" {roomID}-{UserName}-{Start}-{End} ";

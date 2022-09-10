@@ -2,12 +2,8 @@
 using Hotel_Model.DTO;
 using Microsoft.EntityFrameworkCore;
 using MVVM.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using ViewModel.Services.ReservationCreator;
 
 namespace Hotel_Model.Services.ReservationConflictValidator
 {
@@ -24,9 +20,15 @@ namespace Hotel_Model.Services.ReservationConflictValidator
         {
             using (ReserveRoomDBContext context = _dbContextFactory.CreateDbContext())
             {
-                return await context.Reservations.
-                    Select(r => ToReservationMapper(r)).
-                    FirstOrDefaultAsync(r => r.Conflicts(reservation));
+                ReservationDTO reservationDTO = await context.Reservations.
+                    Where(r => r.FloorNum== reservation.roomID.FloorNum).
+                    Where(r => r.RoomNum== reservation.roomID.RoomNum).
+                    Where(r => r.End>reservation.Start ).
+                    Where(r=> r.Start < reservation.End).
+                    FirstOrDefaultAsync();
+                if (reservationDTO is null)
+                    return null;
+                return ToReservationMapper(reservationDTO);
             }
         }
         private static Reservation ToReservationMapper(ReservationDTO r)

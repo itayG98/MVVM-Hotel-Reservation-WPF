@@ -22,7 +22,7 @@ namespace MVVM
 
         private readonly Hotel _hotel;
         private readonly NavigationStore _navigationStore;
-        private const string CONNECTIONSTRING= "Data Source = itayG98; Initial Catalog = HotelDB.db; Integrated Security = True";
+        private const string CONNECTIONSTRING= "Data Source = itayG98; Initial Catalog = Hotel; Integrated Security = True";
         private readonly ReserveRoomDbFactory reservationDbContextFactort;
         public App() 
         {
