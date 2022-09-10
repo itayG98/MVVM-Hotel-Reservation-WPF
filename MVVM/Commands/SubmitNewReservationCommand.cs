@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace MVVM.Commands
 {
-    internal class SubmitNewReservationCommand : CommandBase
+    public class SubmitNewReservationCommand : CommandBase
     {
         private readonly Hotel _hotel;
         private readonly MakeReservationViewModel _makeReservationViewModel;

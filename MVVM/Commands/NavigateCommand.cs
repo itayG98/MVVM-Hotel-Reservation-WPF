@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MVVM.Commands
 {
-    internal class NavigateCommand : CommandBase
+    public class NavigateCommand : CommandBase
     {
         public override void Execute(object? parameter)
         {

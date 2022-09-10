@@ -1,4 +1,6 @@
-﻿using MVVM.Model;
+﻿using MVVM.Commands;
+using MVVM.Model;
+using MVVM.Sores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,13 @@ namespace MVVM.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
-        public MainViewModel(Hotel hotel)
+        private readonly NavigationStore _navigationStore;
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViwModel;
+        public MainViewModel(NavigationStore navigationStore)
         {
-            CurrentViewModel=new ReservationLVViewModel();
+            _navigationStore = navigationStore;
         }
+
+
     }
 }
