@@ -27,10 +27,7 @@ namespace MVVM.Model
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 
-        public override string ToString()
-        {
-            return "The reservation dates are not valid";
-        }
+        public override string Message =>  $"The reservation dates {Reservation.Start}-{Reservation.End} are not valid";
     }
 
 }
