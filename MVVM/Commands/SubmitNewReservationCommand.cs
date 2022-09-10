@@ -1,4 +1,5 @@
 ﻿using MVVM.Model;
+using MVVM.Services;
 using MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ namespace MVVM.Commands
     {
         private readonly Hotel _hotel;
         private readonly MakeReservationViewModel _makeReservationViewModel;
+        private readonly NavigationService _reservationNavigationService;
 
-        public SubmitNewReservationCommand(MakeReservationViewModel makeReservationViewModel,Hotel hotel)
+        public SubmitNewReservationCommand(MakeReservationViewModel makeReservationViewModel,Hotel hotel,NavigationService reservationNavigationService)
         {
             _hotel = hotel;
             _makeReservationViewModel = makeReservationViewModel;
             _makeReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
+            _reservationNavigationService = reservationNavigationService;
         }
 
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
@@ -45,6 +48,7 @@ namespace MVVM.Commands
             {
                 _hotel.MakeReserbation(resrv);
                 MessageBox.Show("Succesfully reserved room", "Enjoy!", MessageBoxButton.OK, MessageBoxImage.Information);
+                _reservationNavigationService.Navigate();
             }
             catch (ReservationConflictException ex)
             {

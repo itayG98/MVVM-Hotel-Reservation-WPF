@@ -1,5 +1,6 @@
 ﻿using MVVM.Commands;
 using MVVM.Model;
+using MVVM.Services;
 using MVVM.Sores;
 using System;
 using System.Collections.Generic;
@@ -65,10 +66,10 @@ namespace MVVM.ViewModel
 
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
-        public MakeReservationViewModel(Hotel hotel, NavigationStore navigationStore, Func<ReservationLVViewModel> createReservationLVViewModel)
+        public MakeReservationViewModel(Hotel hotel,NavigationService reservationNavigationService)
         {
-            SubmitCommand = new SubmitNewReservationCommand(this,hotel);
-            CancelCommand = new NavigateCommand(navigationStore,createReservationLVViewModel);
+            SubmitCommand = new SubmitNewReservationCommand(this,hotel, reservationNavigationService);
+            CancelCommand = new NavigateCommand(reservationNavigationService);
         }
 
 

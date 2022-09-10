@@ -1,4 +1,5 @@
 ﻿using MVVM.Model;
+using MVVM.Services;
 using MVVM.Sores;
 using MVVM.ViewModel;
 using System;
@@ -31,12 +32,12 @@ namespace MVVM
         }
         private MakeReservationViewModel CreateMakeReservationViewModel()
         {
-            return new MakeReservationViewModel(_hotel,_navigationStore,CreateReservationLVViewModel);
+            return new MakeReservationViewModel(_hotel,new NavigationService(_navigationStore, CreateReservationLVViewModel));
         }
 
         private ReservationLVViewModel CreateReservationLVViewModel()
         {
-            return new ReservationLVViewModel(_navigationStore, CreateMakeReservationViewModel);
+            return new ReservationLVViewModel(new NavigationService(_navigationStore, CreateMakeReservationViewModel));
         }
     }
 }
