@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM", "MVVM\MVVM.csproj", "{B376933E-AC12-48CA-ACAA-6D48EBDA7E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel-Model", "Hotel-Model\Hotel-Model.csproj", "{972F07AB-6F33-462C-9DB8-31553ED0C9F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Hotel-Model\Model.csproj", "{972F07AB-6F33-462C-9DB8-31553ED0C9F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

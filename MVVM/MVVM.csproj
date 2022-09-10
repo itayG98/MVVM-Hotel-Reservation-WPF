@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hotel-Model\Hotel-Model.csproj" />
+    <ProjectReference Include="..\Hotel-Model\Model.csproj" />
   </ItemGroup>
 
 </Project>
