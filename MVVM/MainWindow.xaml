@@ -7,8 +7,17 @@
         xmlns:Views="clr-namespace:MVVM.Views" xmlns:viewmodel="clr-namespace:MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         mc:Ignorable="d"
         Title="ReserveRoom" Height="450" Width="800" FontSize="14">
-        
+
+
     <Grid Margin="20 10" MaxWidth="750">
-        <Views:ReservationListView DataContext="{Binding CurrentViewModel}" />
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewmodel:MakeReservationViewModel}" >
+                <Views:MakeReservationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:ReservationLVViewModel}" >
+                <Views:MakeReservationView/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>
