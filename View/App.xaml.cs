@@ -5,10 +5,8 @@ using MVVM.Model;
 using MVVM.Services;
 using MVVM.Sores;
 using MVVM.ViewModel;
-using System;
-using System.Diagnostics.Metrics;
+using System.Configuration;
 using System.Windows;
-using System.Windows.Markup;
 using ViewModel.Services.ReservationCreator;
 using ViewModel.Services.ReservationProvider;
 
@@ -22,15 +20,22 @@ namespace MVVM
 
         private readonly Hotel _hotel;
         private readonly NavigationStore _navigationStore;
-        private const string CONNECTIONSTRING= "Data Source = itayG98; Initial Catalog = Hotel; Integrated Security = True";
+        private readonly string _connectionString;
+
         private readonly ReserveRoomDbFactory reservationDbContextFactort;
         public App() 
         {
-            reservationDbContextFactort = new (CONNECTIONSTRING);
+            //Get the configured  connString
+            ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+            _connectionString = settings[0].ConnectionString;
+            reservationDbContextFactort = new (_connectionString);
+
+            //Create services of the app
             DatabaseReservationProvider reservationProvider = new (reservationDbContextFactort);
             DatabaseReservationCreator reservationCreator = new (reservationDbContextFactort);
             DatabaseReservationConflictValidator reservationValidator = new (reservationDbContextFactort);
 
+            //Inti hotel with the services and navigation store
             ReservationBook reservationBook = new (reservationProvider, reservationCreator, reservationValidator);
             _hotel = new ("Gety's Suiets",reservationBook);
             _navigationStore = new();

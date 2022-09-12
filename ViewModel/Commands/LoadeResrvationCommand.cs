@@ -25,7 +25,7 @@ namespace ViewModel.Commands
                 IEnumerable<Reservation> reservations = await _hotel.GetReservations();
                 _ViewModel.UpdateReservation(reservations);
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Failed to laod reservations", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
