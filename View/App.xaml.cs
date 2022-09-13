@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Windows;
 using ViewModel.Services.ReservationCreator;
 using ViewModel.Services.ReservationProvider;
+using ViewModel.Sores;
 
 namespace MVVM
 {
@@ -19,6 +20,7 @@ namespace MVVM
     {
 
         private readonly Hotel _hotel;
+        private readonly HotelStore _hotelStore;
         private readonly NavigationStore _navigationStore;
         private readonly string _connectionString;
 
@@ -38,6 +40,7 @@ namespace MVVM
             //Inti hotel with the services and navigation store
             ReservationBook reservationBook = new (reservationProvider, reservationCreator, reservationValidator);
             _hotel = new ("Gety's Suiets",reservationBook);
+            _hotelStore = new HotelStore(_hotel);
             _navigationStore = new();
         }
         protected override void OnStartup(StartupEventArgs e)
@@ -57,12 +60,12 @@ namespace MVVM
         }
         private MakeReservationViewModel CreateMakeReservationViewModel()
         {
-            return new MakeReservationViewModel(_hotel,new NavigationService(_navigationStore, CreateReservationLVViewModel));
+            return new MakeReservationViewModel(_hotelStore, new NavigationService(_navigationStore, CreateReservationLVViewModel));
         }
 
         private ReservationLVViewModel CreateReservationLVViewModel()
         {
-            return ReservationLVViewModel.LoadViewModel(_hotel,new NavigationService(_navigationStore, CreateMakeReservationViewModel));
+            return ReservationLVViewModel.LoadViewModel(_hotelStore, new NavigationService(_navigationStore, CreateMakeReservationViewModel));
         }
     }
 }

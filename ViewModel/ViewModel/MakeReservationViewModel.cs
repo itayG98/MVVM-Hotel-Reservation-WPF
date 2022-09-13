@@ -3,6 +3,7 @@ using MVVM.Model;
 using MVVM.Services;
 using System;
 using System.Windows.Input;
+using ViewModel.Sores;
 
 namespace MVVM.ViewModel
 {
@@ -61,9 +62,9 @@ namespace MVVM.ViewModel
 
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
-        public MakeReservationViewModel(Hotel hotel,NavigationService reservationNavigationService)
+        public MakeReservationViewModel(HotelStore hotelStore,NavigationService reservationNavigationService)
         {
-            SubmitCommand = new MakeReservationCommand(this,hotel, reservationNavigationService);
+            SubmitCommand = new MakeReservationCommand(this, hotelStore, reservationNavigationService);
             CancelCommand = new NavigateCommand(reservationNavigationService);
         }
 

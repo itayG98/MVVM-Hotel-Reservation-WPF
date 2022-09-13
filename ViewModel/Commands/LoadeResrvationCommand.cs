@@ -4,17 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using ViewModel.Sores;
 
 namespace ViewModel.Commands
 {
     internal class LoadeResrvationCommand : AsyncCommand
     {
-        private readonly Hotel _hotel;
+        private readonly HotelStore _hotelStore;
         private readonly ReservationLVViewModel _ViewModel;
 
-        public LoadeResrvationCommand(Hotel hotel, ReservationLVViewModel viewModel)
+        public LoadeResrvationCommand(HotelStore hotelStore, ReservationLVViewModel viewModel)
         {
-            _hotel = hotel;
+            _hotelStore = hotelStore;
             _ViewModel = viewModel;
         }
 
@@ -22,8 +23,8 @@ namespace ViewModel.Commands
         {
             try
             {
-                IEnumerable<Reservation> reservations = await _hotel.GetReservations();
-                _ViewModel.UpdateReservation(reservations);
+                 await _hotelStore.Load();
+                _ViewModel.UpdateReservation(_hotelStore.Reservations);
             }
             catch
             {

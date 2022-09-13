@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ViewModel.Commands;
+using ViewModel.Sores;
 
 namespace MVVM.ViewModel
 {
@@ -15,17 +16,17 @@ namespace MVVM.ViewModel
         public ICommand MakeReservationCommand { get; } 
         public ICommand LoadReservationCommand { get; }
 
-        public ReservationLVViewModel(Hotel hotel,NavigationService makeReservationNavitaionService)
+        public ReservationLVViewModel(HotelStore hotelStore,NavigationService makeReservationNavitaionService)
         {
-            LoadReservationCommand = new LoadeResrvationCommand(hotel, this);
+            LoadReservationCommand = new LoadeResrvationCommand(hotelStore, this);
             MakeReservationCommand = new NavigateCommand(makeReservationNavitaionService);
             _reservations = new ObservableCollection<ReservationViewModel>();
 
         }
 
-        public static ReservationLVViewModel LoadViewModel(Hotel hotel, NavigationService makeReservationNavitaionService) 
+        public static ReservationLVViewModel LoadViewModel(HotelStore hotelStore, NavigationService makeReservationNavitaionService) 
         {
-            ReservationLVViewModel viewModel = new ReservationLVViewModel(hotel, makeReservationNavitaionService);
+            ReservationLVViewModel viewModel = new ReservationLVViewModel(hotelStore, makeReservationNavitaionService);
             viewModel.LoadReservationCommand.Execute(null);
             return viewModel;
         }

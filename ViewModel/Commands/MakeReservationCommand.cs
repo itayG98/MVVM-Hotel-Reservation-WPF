@@ -6,18 +6,20 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using ViewModel.Commands;
+using ViewModel.Sores;
 
 namespace MVVM.Commands
 {
     public class MakeReservationCommand : AsyncCommand
     {
-        private readonly Hotel _hotel;
+        private readonly HotelStore _hotelStore;
         private readonly MakeReservationViewModel _makeReservationViewModel;
         private readonly NavigationService _reservationNavigationService;
 
-        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel,Hotel hotel,NavigationService reservationNavigationService)
+        public MakeReservationCommand(MakeReservationViewModel makeReservationViewModel,
+            HotelStore hotelStore,NavigationService reservationNavigationService)
         {
-            _hotel = hotel;
+            _hotelStore = hotelStore;
             _makeReservationViewModel = makeReservationViewModel;
             _makeReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
             _reservationNavigationService = reservationNavigationService;
@@ -44,7 +46,7 @@ namespace MVVM.Commands
                 );
             try
             {
-                await _hotel.MakeReserbation(resrv);
+                _hotelStore.MakeReservation(resrv);
                 MessageBox.Show("Succesfully reserved room", "Enjoy!", MessageBoxButton.OK, MessageBoxImage.Information);
                 _reservationNavigationService.Navigate();
             }
