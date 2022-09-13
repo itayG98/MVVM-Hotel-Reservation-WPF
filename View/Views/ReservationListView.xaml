@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:MVVM.Views"
              xmlns:Model ="clr-namespace:MVVM.Model;assembly=Hotel-Model" 
              xmlns:viewmodel="clr-namespace:MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ReservationLVViewModel}"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" >
+             mc:Ignorable="d" d:DesignHeight="550" d:DesignWidth="800" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,19 +21,17 @@
         <Button Grid.Row="0" Grid.Column="1" Content="Make New Reservation" Command="{Binding MakeReservationCommand}"/>
 
         <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Reservations}">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" IsEnabled="True">
-                <ListView.View>
-                    <GridView>
-                        <GridView.Columns>
-                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="User Name"  DisplayMemberBinding="{Binding UserName}" />
-                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Room"  DisplayMemberBinding="{Binding RoomID}" />
-                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Start date"  DisplayMemberBinding="{Binding StartDate}" />
-                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="End date"  DisplayMemberBinding="{Binding EndDate}" />
-                            <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="Duration"  DisplayMemberBinding="{Binding Duration.Days}" />
-                        </GridView.Columns>
-                    </GridView>
-                </ListView.View>
-            </ScrollViewer>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="User Name"  DisplayMemberBinding="{Binding UserName}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Room"  DisplayMemberBinding="{Binding RoomID}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto" Header="Start date"  DisplayMemberBinding="{Binding StartDate}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="End date"  DisplayMemberBinding="{Binding EndDate}" />
+                        <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" Width="auto"  Header="Duration"  DisplayMemberBinding="{Binding Duration.Days}" />
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
         </ListView>
     </Grid>
 </UserControl>
