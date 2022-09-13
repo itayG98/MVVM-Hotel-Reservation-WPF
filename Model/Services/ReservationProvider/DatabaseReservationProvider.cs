@@ -26,7 +26,7 @@ namespace ViewModel.Services.ReservationProvider
                 IEnumerable<ReservationDTO> reservationDTOs = await context.Reservations.ToListAsync();
                 return reservationDTOs.Select
                     (r => ToReservationMapper(r)).
-                    ToList();
+                    ToList().OrderBy(r=> r.Start);
             } 
         }
 
